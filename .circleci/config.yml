@@ -23,9 +23,9 @@ jobs:
           key: v1-deps-{{ checksum "requirements.txt" }}
 
       - run:
-          name: make html
+          name: make publish
           command: |
-            make html
+            make publish
 
       - run:
           name: publish to github pages
