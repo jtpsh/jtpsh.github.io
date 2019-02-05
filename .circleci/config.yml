@@ -25,10 +25,12 @@ jobs:
       - run:
           name: make publish
           command: |
+            test -e && source jtp-env/bin/activate
             make publish
 
       - run:
           name: publish to github pages
           command: |
+            test -e && source jtp-env/bin/activate
             make github
 
