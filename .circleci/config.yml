@@ -15,11 +15,6 @@ jobs:
             python3 -m venv venv
             test -e && source venv/bin/activate
             pip install wheel
-            pwd
-            ls -la
-            file `pwd`/requirements.txt || true
-            file ~/project/requirements || true
-            find . -type f -name requirements.txt
             pip install -r ./requirements.txt
 
       - save_cache:
