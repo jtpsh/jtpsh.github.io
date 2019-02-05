@@ -74,6 +74,8 @@ endif
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	cp $(BASEDIR)/CNAME $(OUTPUTDIR)
+	mkdir -p $(OUTPUTDIR)/.circleci
+	cp $(BASEDIR)/.circleci/config.yml $(OUTPUTDIR)/.circleci
 
 github: publish
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
