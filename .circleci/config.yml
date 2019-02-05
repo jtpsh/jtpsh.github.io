@@ -8,8 +8,8 @@ jobs:
       - image: circleci/python:3.6.7
     steps:
       - checkout
-      - restore_cache:
-          key: v1-deps-{{ checksum "requirements.txt" }}
+        #      - restore_cache:
+        #          key: v1-deps-{{ checksum "requirements.txt" }}
       - run:
           command: |
             python3 -m venv venv
