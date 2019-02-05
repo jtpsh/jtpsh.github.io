@@ -19,16 +19,18 @@ jobs:
 
       - save_cache:
           paths:
-            - ./venv
+            - ./jtp-env
           key: v1-deps-{{ checksum "requirements.txt" }}
 
       - run:
           name: make publish
           command: |
+            test -e && source jtp-env/bin/activate
             make publish
 
       - run:
           name: publish to github pages
           command: |
+            test -e && source jtp-env/bin/activate
             make github
 
