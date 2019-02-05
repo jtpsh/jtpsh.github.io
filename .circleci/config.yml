@@ -1,13 +1,11 @@
 version: 2
-general:
-  branches:
-    only:
-      - static-generator # limit only to this branch
 jobs:
   build:
+    filters:
+      branches:
+        only: static-generator
     docker:
       - image: circleci/python:3.6.7
-
     steps:
       - checkout
       - restore_cache:
