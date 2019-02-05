@@ -72,8 +72,11 @@ else
 	$(PELICAN) -lr $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 endif
 
-venv:
-	. $(VENV)/bin/activate
+venv: $(VENV)/bin/activate
+$(VENV)/bin/activate: requirements.txt
+	test -d $(VENV) || python3 venv $(VENV)
+	pip install -Ur requirements.txt
+	touch $(VENV)/bin/activate
 
 publish: venv
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
