@@ -7,7 +7,7 @@ INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
-VENV=$(BASEDIR)/venv
+VENV=$(BASEDIR)/jtp-env
 
 GITHUB_PAGES_BRANCH=master
 
@@ -73,7 +73,7 @@ else
 endif
 
 venv:
-	source $(VENV)/bin/activate
+	. $(VENV)/bin/activate
 
 publish: venv
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
