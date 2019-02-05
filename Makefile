@@ -7,6 +7,7 @@ INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
+VENV=$(BASEDIR)/venv
 
 GITHUB_PAGES_BRANCH=master
 
@@ -71,7 +72,10 @@ else
 	$(PELICAN) -lr $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 endif
 
-publish:
+venv:
+	source $(VENV)/bin/activate
+
+publish: venv
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	cp $(BASEDIR)/CNAME $(OUTPUTDIR)
 	mkdir -p $(OUTPUTDIR)/.circleci
