@@ -7,7 +7,6 @@ INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
-VENV=$(BASEDIR)/jtp-env
 
 GITHUB_PAGES_BRANCH=master
 
@@ -72,13 +71,7 @@ else
 	$(PELICAN) -lr $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 endif
 
-venv: $(VENV)/bin/activate
-$(VENV)/bin/activate: requirements.txt
-	test -d $(VENV) || python3 venv $(VENV)
-	pip install -Ur requirements.txt
-	touch $(VENV)/bin/activate
-
-publish: venv
+publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	cp $(BASEDIR)/CNAME $(OUTPUTDIR)
 	mkdir -p $(OUTPUTDIR)/.circleci
