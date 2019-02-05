@@ -15,9 +15,7 @@ jobs:
             python3 -m venv venv
             test -e && source venv/bin/activate
             pip install wheel
-            pwd
-            ls -la
-            pip install -r ${CIRCLE_PROJECT_REPONAME}/requirements.txt
+            pip install -r ${CIRCLE_WORKING_DIRECTORY}/requirements.txt
 
       - save_cache:
           paths:
