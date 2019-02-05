@@ -8,13 +8,18 @@ jobs:
       - image: circleci/python:3.6.7
     steps:
       - checkout
-        #      - restore_cache:
-        #          key: v1-deps-{{ checksum "requirements.txt" }}
+      - restore_cache:
+          key: v1-deps-{{ checksum "requirements.txt" }}
       - run:
           command: |
             python3 -m venv venv
             test -e && source venv/bin/activate
             pip install wheel
+            pwd
+            ls -la
+            file `pwd`/requirements.txt || true
+            file ~/projects/requirements || true
+            find . -type f -name requirements.txt
             pip install -r ${CIRCLE_WORKING_DIRECTORY}/requirements.txt
 
       - save_cache:
