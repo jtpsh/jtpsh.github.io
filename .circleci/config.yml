@@ -1,0 +1,37 @@
+version: 2
+general:
+  branches:
+    only:
+      - static-generator # limit only to this branch
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.7
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "requirements.txt" }}
+      - run:
+          command: |
+            python3 -m venv venv
+            test -e && source venv/bin/activate
+            pip install wheel
+            pip install -r requirements.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-deps-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: make html
+          command: |
+            test -e && source venv/bin/activate
+            make html
+
+      - run:
+          name: publish to github pages
+          command: |
+            make github
+
