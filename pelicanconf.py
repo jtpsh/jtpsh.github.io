@@ -10,6 +10,8 @@ PATH = 'content'
 
 TIMEZONE = 'Asia/Manila'
 
+THEME = 'theme/default'
+
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
