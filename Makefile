@@ -79,7 +79,7 @@ publish:
 
 github: publish
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
-	git commit --amend --author="Cirle-CI<git@jtp.sh>"
+	git commit --amend --author="Cirle-CI <git@jtp.sh>"
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
