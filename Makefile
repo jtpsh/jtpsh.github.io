@@ -71,8 +71,11 @@ else
 	$(PELICAN) -lr $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 endif
 
+cssminify:
+	css-html-js-minify theme/default/static/css
+
 html5validate:
-	html5validator --root output/
+	html5validator --root output/ --also-check-css
 
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
