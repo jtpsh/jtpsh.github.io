@@ -82,6 +82,7 @@ publish:
 	cp $(BASEDIR)/CNAME $(OUTPUTDIR)
 	mkdir -p $(OUTPUTDIR)/.circleci
 	cp $(BASEDIR)/.circleci/config.yml $(OUTPUTDIR)/.circleci
+	cp $(BASEDIR)/README.md $(OUTPUTDIR)/README.md
 
 github: publish
 	git config --global user.email "git@jtp.sh"
