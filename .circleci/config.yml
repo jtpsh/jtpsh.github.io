@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_and_publish:
+  build-test-deploy:
     docker:
       - image: circleci/python:3.6.7
     steps:
@@ -8,7 +8,9 @@ jobs:
       - restore_cache:
           key: v1-deps-{{ checksum "requirements.txt" }}
       - run:
+          name: Setup Environment
           command: |
+            sudo apt update && sudo apt install -y openjdk-8-jre
             python3 -m venv jtp-env
             test -e && source jtp-env/bin/activate
             pip install wheel
@@ -20,13 +22,19 @@ jobs:
           key: v1-deps-{{ checksum "requirements.txt" }}
 
       - run:
-          name: make publish
+          name: Generate HTML
           command: |
             test -e && source jtp-env/bin/activate
-            make publish
+            make html
 
       - run:
-          name: publish to github pages
+          name: Validate HTML files
+          command: |
+            test -e && source jtp-env/bin/activate
+            make html5validate
+
+      - run:
+          name: Publish to Github pages (master branch)
           command: |
             test -e && source jtp-env/bin/activate
             make github
@@ -35,7 +43,7 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build_and_publish:
+      - build-test-deploy:
           filters:
             branches:
               only: static-generator
