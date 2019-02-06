@@ -33,7 +33,7 @@ jobs:
             make html
 
       - run:
-          name: Validate HTML files
+          name: Validate HTML/CSS files
           command: |
             test -e && source jtp-env/bin/activate
             make html5validate
