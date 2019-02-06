@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Setup Environment
           command: |
-            apt apt && apt install -y openjdk-8-jdk
+            apt apt && apt install -y openjdk-8-jre
             python3 -m venv jtp-env
             test -e && source jtp-env/bin/activate
             pip install wheel
