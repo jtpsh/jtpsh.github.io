@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build_and_publish:
-    filters:
-      branches:
-        only: static-generator
     docker:
       - image: circleci/python:3.6.7
     steps:
@@ -39,3 +36,6 @@ workflows:
   build_and_publish:
     jobs:
       - build_and_publish
+            filters:
+              branches:
+                only: static-generator
