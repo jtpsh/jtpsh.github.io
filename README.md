@@ -19,3 +19,7 @@ make cssminify && make html && \
     make serve
 ```
 
+### Updating gh-pages
+Every commits pushed to this branch are automatically fed on CirclCI.
+See `.circleci/config.yml`
+
