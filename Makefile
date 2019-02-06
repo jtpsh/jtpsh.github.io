@@ -85,8 +85,8 @@ publish:
 	cp $(BASEDIR)/README.md $(OUTPUTDIR)/README.md
 
 github: publish
-	git config --global user.email "git@jtp.sh"
-	git config --global user.name "CircleCI"
+	git config --global user.email "jp@jtp.sh"
+	git config --global user.name "via CircleCI"
 	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
