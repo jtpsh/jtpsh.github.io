@@ -1,4 +1,5 @@
 blinker==1.4
+css-html-js-minify==2.5.5
 docutils==0.14
 feedgenerator==1.9
 ghp-import==0.5.5
