@@ -71,6 +71,9 @@ else
 	$(PELICAN) -lr $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 endif
 
+html5validate:
+	html5validator --root output/
+
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	cp $(BASEDIR)/CNAME $(OUTPUTDIR)
@@ -84,4 +87,4 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 
-.PHONY: html help clean regenerate serve serve-global devserver stopserver publish github
+.PHONY: html help clean regenerate serve serve-global devserver stopserver publish github html5validate
