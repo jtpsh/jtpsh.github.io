@@ -20,17 +20,18 @@ jobs:
           paths:
             - ./jtp-env
           key: v1-deps-{{ checksum "requirements.txt" }}
-      - run:
-          name: Minify CSS
-          command: |
-            test -e && source jtp-env/bin/activate
-            make cssminify
 
       - run:
           name: Generate HTML
           command: |
             test -e && source jtp-env/bin/activate
-            make html
+            make Publish
+
+      - run:
+          name: Minify CSS
+          command: |
+            test -e && source jtp-env/bin/activate
+            make cssminify
 
       - run:
           name: Validate HTML/CSS files
