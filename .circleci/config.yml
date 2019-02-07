@@ -28,12 +28,6 @@ jobs:
             make publish
 
       - run:
-          name: Minify CSS
-          command: |
-            test -e && source jtp-env/bin/activate
-            make cssminify
-
-      - run:
           name: Validate HTML/CSS files
           command: |
             test -e && source jtp-env/bin/activate

@@ -70,9 +70,6 @@ else
 	$(PELICAN) -lr $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 endif
 
-cssminify:
-	css-html-js-minify output/theme/css/
-
 validate:
 	html5validator --root output/ --also-check-css
 
@@ -82,6 +79,7 @@ publish:
 	mkdir -p $(OUTPUTDIR)/.circleci
 	cp $(BASEDIR)/.circleci/config.yml $(OUTPUTDIR)/.circleci
 	cp $(BASEDIR)/README.md $(OUTPUTDIR)/README.md
+	css-html-js-minify $(OUTPUTDIR)/theme/css/
 
 github: publish
 	git config --global user.email "jp@jtp.sh"
