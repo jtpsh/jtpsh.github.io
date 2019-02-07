@@ -10,7 +10,7 @@ h1,h2,h3 {
 line-height: 1.2;
 font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
 }
-p {
+* {
 font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
 }
 hr {
@@ -19,7 +19,38 @@ height: 0;
 border-top: 1px solid rgba(0, 0, 0, 0.1);
 border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-.txtlink {
+h1 a:link{
 text-decoration: none;
 color: #444;
+}
+h1 a:visited{
+text-decoration: none;
+color: #444;
+}
+h1 a:hover{
+text-decoration: underline;
+color: #444;
+}
+h1 a:active{
+text-decoration: none;
+color: #444;
+}
+h2 a:link, p a:link {
+text-decoration: underline;
+color: #444;
+}
+h2 a:visited, p a:visited {
+text-decoration: underline;
+color: #444;
+}
+h2 a:hover, p a:hover{
+text-decoration: underline;
+color: #444;
+}
+h2 a:active, p a:active{
+text-decoration: underline;
+color: #444;
+}
+.site-footer {
+line-height: 1.0;
 }
