@@ -15,7 +15,7 @@ git checkout static-generator
 source local_setup.sh
 
 make cssminify && make html && \
-    make html5validator && \
+    make validate && \
     make serve
 ```
 
