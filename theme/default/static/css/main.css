@@ -1,56 +1,112 @@
 body {
-margin: 40px auto;
-max-width: 650px;
-line-height: 1.6;
-font-size: 18px;
-color: #444;
-padding: 0 10px;
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    padding: 0 10px;
 }
 h1,h2,h3 {
-line-height: 1.2;
-font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
+    line-height: 1.2;
+    font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
 }
 * {
-font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
+    font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
 }
 hr {
-border: 0;
-height: 0;
-border-top: 1px solid rgba(0, 0, 0, 0.1);
-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-h1 a:link{
-text-decoration: none;
-color: #444;
+h1 a:link {
+    text-decoration: none;
+    color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
 }
-h1 a:visited{
-text-decoration: none;
-color: #444;
+h1 a:visited {
+    text-decoration: none;
+    color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
 }
-h1 a:hover{
-text-decoration: underline;
-color: #444;
+h1 a:hover {
+    background-color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
+    color: white;
+    text-decoration: none;
 }
-h1 a:active{
-text-decoration: none;
-color: #444;
+h1 a:active {
+    background-color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
+    color: white;
+    text-decoration: none;
 }
 h2 a:link, p a:link {
-text-decoration: underline;
-color: #444;
+    text-decoration: underline;
+    color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
 }
 h2 a:visited, p a:visited {
-text-decoration: underline;
-color: #444;
+    text-decoration: underline;
+    color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
 }
-h2 a:hover, p a:hover{
-text-decoration: underline;
-color: #444;
+h2 a:hover, p a:hover {
+    background-color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
+    color: white;
+    text-decoration: none;
 }
-h2 a:active, p a:active{
-text-decoration: underline;
-color: #444;
+h2 a:active, p a:active {
+    background-color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
+    color: white;
+    text-decoration: none;
 }
 .site-footer {
-line-height: 1.0;
+    line-height: 1.0;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar a {
+    font-weight: bold;
+    padding: 8px 16px;
+}
+.navbar {
+    max-width: 650px;
+}
+.navbar li {
+    display: inline-block;
+    text-align: justify;
+}
+.navbar a:link, .navbar a:visited {
+    text-decoration: underline;
+    color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
+}
+.navbar a:hover {
+    background-color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
+    color: white;
+    text-decoration: none;
+}
+.navbar a:active {
+    background-color: #444;
+    transition: 0.1s all;
+    transition-delay: 0.1s;
+    color: white;
+    text-decoration: none;
 }
