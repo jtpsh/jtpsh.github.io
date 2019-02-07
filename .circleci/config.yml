@@ -19,6 +19,7 @@ jobs:
       - save_cache:
           paths:
             - ./jtp-env
+            - /usr/lib/jvm/java-8-openjdk-amd64/
           key: v1-deps-{{ checksum "requirements.txt" }}
 
       - run:
