@@ -74,7 +74,7 @@ endif
 cssminify:
 	css-html-js-minify theme/default/static/css
 
-html5validate:
+validate:
 	html5validator --root output/ --also-check-css
 
 publish:

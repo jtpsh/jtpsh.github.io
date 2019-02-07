@@ -36,7 +36,7 @@ jobs:
           name: Validate HTML/CSS files
           command: |
             test -e && source jtp-env/bin/activate
-            make html5validate
+            make validate
 
       - run:
           name: Publish to Github pages (master branch)
