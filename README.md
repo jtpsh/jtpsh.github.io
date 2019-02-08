@@ -73,3 +73,55 @@ EXPOSE 80
 CMD apachectl -D FOREGROUND
 ```
 
+Build the image with `docker build -f Dockerfile.base -t jtp.sh:1.0`
+
+```
+docker build -f Dockerfile.base -t jtp.sh:1.0 .
+Sending build context to Docker daemon   54.6MB
+Step 1/8 : FROM bionic:latest
+ ---> 278a86f574bb
+Step 2/8 : RUN apt-get update && apt-get install -y apache2
+ ---> Using cache
+ ---> ab1c385bfc47
+Step 3/8 : RUN mkdir /var/www/jtp.sh
+ ---> Using cache
+ ---> 36a30a5a9f23
+Step 4/8 : RUN rm /etc/apache2/sites-enabled/000-default.conf
+ ---> Using cache
+ ---> 7d1db1fd3f50
+Step 5/8 : COPY apache/jtp.sh.conf /etc/apache2/sites-enabled/jtp.sh.conf
+ ---> Using cache
+ ---> da8ba0ce5cd9
+Step 6/8 : COPY output/ /var/www/jtp.sh
+ ---> 698bdade8eb5
+Step 7/8 : EXPOSE 80
+ ---> Running in 4e21cb556f5e
+Removing intermediate container 4e21cb556f5e
+ ---> a2b900c04e10
+Step 8/8 : CMD apachectl -D FOREGROUND
+ ---> Running in 80c128065876
+Removing intermediate container 80c128065876
+ ---> f2ec0e584d5d
+Successfully built f2ec0e584d5d
+Successfully tagged jtp.sh:1.0
+```
+
+We can confirm the new image has been created:
+
+```
+docker image ls jtp.sh:1.0
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+jtp.sh              1.0                 f2ec0e584d5d        46 seconds ago      364MB
+```
+
+Running the container:
+
+```
+docker container run -p 8000:80 -d jtp.sh:1.0
+ebce0f19de8df6bcfd3b998dac0637e7e80843e0b512b99f1e74f6e150fb7ca9
+
+docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                  NAMES
+ebce0f19de8d        jtp.sh:1.0          "/bin/sh -c 'apachec…"   About a minute ago   Up About a minute   0.0.0.0:8000->80/tcp   inspiring_volhard
+```
+
