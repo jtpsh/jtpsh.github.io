@@ -24,6 +24,20 @@
     -->
 </header>        <hr><br>
         <div class="container">
+            <h2><a href="/creating-docker-to-test-our-static-site">Creating Docker to test our static site</a></h2>
+            <h3>Docker from base image (Manual)</h3>
+<p>Since I'm trying to learn Docker, I tried creating image from scratch. Creating base Ubuntu image is straightforward using <code>deboostrap</code>.</p>
+<div class="highlight"><pre><span></span>sudo apt install debootstrap
+sudo debootstrap bionic bionic
+</pre></div>
+
+
+<p>Once complete we can now import the image:</p>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">tar</span> <span class="o">-</span><span class="n">C</span> <span class="n">bionic</span> <span class="o">-</span><span class="n">c</span> <span class="o">.</span> <span class="o">|</span> <span class="n">docker</span> <span class="kn">import</span> <span class="o">-</span> <span class="n">bionic</span>
+</pre></div>
+
+
+<p>(You …</p>
             <h2><a href="/test-first-post">Test first post</a></h2>
             <p>This is a new first post. Pelican <a href="https://github.com/getpelican/pelican/wiki/Tips-n-Tricks">Tips n Tricks</a></p>
 

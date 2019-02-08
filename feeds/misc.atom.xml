@@ -1,2 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>jtp.sh - misc</title><link href="https://jtp.sh/" rel="alternate"></link><link href="https://jtp.sh/feeds/misc.atom.xml" rel="self"></link><id>https://jtp.sh/</id><updated>2019-02-07T21:15:57+08:00</updated><entry><title>Test first post</title><link href="https://jtp.sh/test-first-post.html" rel="alternate"></link><published>2019-02-07T21:15:57+08:00</published><updated>2019-02-07T21:15:57+08:00</updated><author><name>jp</name></author><id>tag:jtp.sh,2019-02-07:/test-first-post.html</id><summary type="html">&lt;p&gt;This is a new first post. Pelican &lt;a href="https://github.com/getpelican/pelican/wiki/Tips-n-Tricks"&gt;Tips n Tricks&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a new first post. Pelican &lt;a href="https://github.com/getpelican/pelican/wiki/Tips-n-Tricks"&gt;Tips n Tricks&lt;/a&gt;&lt;/p&gt;</content></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jtp.sh - misc</title><link href="https://jtp.sh/" rel="alternate"></link><link href="https://jtp.sh/feeds/misc.atom.xml" rel="self"></link><id>https://jtp.sh/</id><updated>2019-02-08T19:51:41+08:00</updated><entry><title>Creating Docker to test our static site</title><link href="https://jtp.sh/creating-docker-to-test-our-static-site.html" rel="alternate"></link><published>2019-02-08T19:51:41+08:00</published><updated>2019-02-08T19:51:41+08:00</updated><author><name>jp</name></author><id>tag:jtp.sh,2019-02-08:/creating-docker-to-test-our-static-site.html</id><summary type="html">&lt;h3&gt;Docker from base image (Manual)&lt;/h3&gt;
+&lt;p&gt;Since I'm trying to learn Docker, I tried creating image from scratch. Creating base Ubuntu image is straightforward using &lt;code&gt;deboostrap&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install debootstrap
+sudo debootstrap bionic bionic
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once complete we can now import the image:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="n"&gt;bionic&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;bionic&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(You …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Docker from base image (Manual)&lt;/h3&gt;
+&lt;p&gt;Since I'm trying to learn Docker, I tried creating image from scratch. Creating base Ubuntu image is straightforward using &lt;code&gt;deboostrap&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install debootstrap
+sudo debootstrap bionic bionic
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once complete we can now import the image:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="n"&gt;bionic&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;bionic&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(You can safely remove the files created from the previous command.)&lt;/p&gt;
+&lt;h3&gt;Creating Dockerfile&lt;/h3&gt;
+&lt;p&gt;(See &lt;a href="https://docs.docker.com/engine/reference/builder/"&gt;Docker Documentation&lt;/a&gt; for a a more information.)&lt;/p&gt;
+&lt;p&gt;Save the file as &lt;code&gt;Dockerfile.base&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# We&amp;#39;ll use the image we create earlier
+# Every Dockefile starts with this instruction
+FROM bionic:latest
+
+# Install Apache
+RUN apt-get update &amp;amp;&amp;amp; apt-get install -y apache2
+
+# Create documentroot
+RUN mkdir /var/www/jtp.sh
+
+# Remove default vhost
+RUN rm /etc/apache2/sites-enabled/000-default.conf
+
+# Copy of own vhost
+COPY apache/jtp.sh.conf /etc/apache2/sites-enabled/jtp.sh.conf
+
+# Copy our static files
+COPY output/ /var/www/jtp.sh
+
+# Apache runs on 80 so we&amp;#39;ll have to expose that
+
+EXPOSE 80
+
+# To keep docker running, the process has be kept on foreground
+# otherwise it will just exit as soon as the command is done
+# That is why it&amp;#39;s not advisable to use
+# `service apache2 start`
+# CMD vs RUN - There should be only one CMD
+# CMD is a way to tell how to run the container
+CMD apachectl -D FOREGROUND
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Build the image with &lt;code&gt;docker build -f Dockerfile.base -t jtp.sh:1.0 .&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-f&lt;/code&gt; Use a specific Dockerfile.base (default is Dockerfile)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-t&lt;/code&gt; Give our image a &lt;code&gt;name:tag&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker build -f Dockerfile.base -t jtp.sh:1.0 .
+Sending build context to Docker daemon   54.6MB
+Step 1/8 : FROM bionic:latest
+ ---&amp;gt; 278a86f574bb
+Step 2/8 : RUN apt-get update &amp;amp;&amp;amp; apt-get install -y apache2
+ ---&amp;gt; Using cache
+ ---&amp;gt; ab1c385bfc47
+Step 3/8 : RUN mkdir /var/www/jtp.sh
+ ---&amp;gt; Using cache
+ ---&amp;gt; 36a30a5a9f23
+Step 4/8 : RUN rm /etc/apache2/sites-enabled/000-default.conf
+ ---&amp;gt; Using cache
+ ---&amp;gt; 7d1db1fd3f50
+Step 5/8 : COPY apache/jtp.sh.conf /etc/apache2/sites-enabled/jtp.sh.conf
+ ---&amp;gt; Using cache
+ ---&amp;gt; da8ba0ce5cd9
+Step 6/8 : COPY output/ /var/www/jtp.sh
+ ---&amp;gt; 698bdade8eb5
+Step 7/8 : EXPOSE 80
+ ---&amp;gt; Running in 4e21cb556f5e
+Removing intermediate container 4e21cb556f5e
+ ---&amp;gt; a2b900c04e10
+Step 8/8 : CMD apachectl -D FOREGROUND
+ ---&amp;gt; Running in 80c128065876
+Removing intermediate container 80c128065876
+ ---&amp;gt; f2ec0e584d5d
+Successfully built f2ec0e584d5d
+Successfully tagged jtp.sh:1.0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can confirm the new image has been created:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker image ls jtp.sh:1.0
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+jtp.sh              1.0                 f2ec0e584d5d        46 seconds ago      364MB
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker container run -p 8000:80 -d jtp.sh:1.0
+ebce0f19de8df6bcfd3b998dac0637e7e80843e0b512b99f1e74f6e150fb7ca9
+
+docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                  NAMES
+ebce0f19de8d        jtp.sh:1.0          &amp;quot;/bin/sh -c &amp;#39;apachec…&amp;quot;   About a minute ago   Up About a minute   0.0.0.0:8000-&amp;gt;80/tcp   inspiring_volhard
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;-p&lt;/code&gt; Setup port-forwarding&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-d&lt;/code&gt; Run in background&lt;/p&gt;
+&lt;p&gt;We can now see our site is running by visiting &lt;code&gt;localhost:8000&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screenshot" src="/images/Screenshot_20190208_193833.png"&gt;&lt;/p&gt;</content></entry><entry><title>Test first post</title><link href="https://jtp.sh/test-first-post.html" rel="alternate"></link><published>2019-02-07T21:15:57+08:00</published><updated>2019-02-07T21:15:57+08:00</updated><author><name>jp</name></author><id>tag:jtp.sh,2019-02-07:/test-first-post.html</id><summary type="html">&lt;p&gt;This is a new first post. Pelican &lt;a href="https://github.com/getpelican/pelican/wiki/Tips-n-Tricks"&gt;Tips n Tricks&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a new first post. Pelican &lt;a href="https://github.com/getpelican/pelican/wiki/Tips-n-Tricks"&gt;Tips n Tricks&lt;/a&gt;&lt;/p&gt;</content></entry></feed>

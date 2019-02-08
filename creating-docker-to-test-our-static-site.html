@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jtp.sh - Creating Docker to test our static site</title>
+        <link rel="stylesheet" type="text/css" href="/theme/css/main.min.css">
+    </head>
+
+    <body>
+<header>
+    <h1><a class="txtlink" href="/">Hello, World!</a></h1>
+    <p>jtp.sh - things and stuff</p>
+    <!--
+        commenting; when I have the pages ready
+    <div class="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#Archives">Archives</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    -->
+</header>        <hr><br>
+        <div class="container">
+<section id="content" class="body">
+  <h2>Creating Docker to test our static site</h2>
+  <footer class="post-info">
+    <time class="published" datetime="2019-02-08T19:51:41+08:00">
+        <small>Fri 08 February 2019</small>
+    </time>
+  </footer>
+  <div class="entry-content">
+    <h3>Docker from base image (Manual)</h3>
+<p>Since I'm trying to learn Docker, I tried creating image from scratch. Creating base Ubuntu image is straightforward using <code>deboostrap</code>.</p>
+<div class="highlight"><pre><span></span>sudo apt install debootstrap
+sudo debootstrap bionic bionic
+</pre></div>
+
+
+<p>Once complete we can now import the image:</p>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">tar</span> <span class="o">-</span><span class="n">C</span> <span class="n">bionic</span> <span class="o">-</span><span class="n">c</span> <span class="o">.</span> <span class="o">|</span> <span class="n">docker</span> <span class="kn">import</span> <span class="o">-</span> <span class="n">bionic</span>
+</pre></div>
+
+
+<p>(You can safely remove the files created from the previous command.)</p>
+<h3>Creating Dockerfile</h3>
+<p>(See <a href="https://docs.docker.com/engine/reference/builder/">Docker Documentation</a> for a a more information.)</p>
+<p>Save the file as <code>Dockerfile.base</code></p>
+<div class="highlight"><pre><span></span># We&#39;ll use the image we create earlier
+# Every Dockefile starts with this instruction
+FROM bionic:latest
+
+# Install Apache
+RUN apt-get update &amp;&amp; apt-get install -y apache2
+
+# Create documentroot
+RUN mkdir /var/www/jtp.sh
+
+# Remove default vhost
+RUN rm /etc/apache2/sites-enabled/000-default.conf
+
+# Copy of own vhost
+COPY apache/jtp.sh.conf /etc/apache2/sites-enabled/jtp.sh.conf
+
+# Copy our static files
+COPY output/ /var/www/jtp.sh
+
+# Apache runs on 80 so we&#39;ll have to expose that
+
+EXPOSE 80
+
+# To keep docker running, the process has be kept on foreground
+# otherwise it will just exit as soon as the command is done
+# That is why it&#39;s not advisable to use
+# `service apache2 start`
+# CMD vs RUN - There should be only one CMD
+# CMD is a way to tell how to run the container
+CMD apachectl -D FOREGROUND
+</pre></div>
+
+
+<p>Build the image with <code>docker build -f Dockerfile.base -t jtp.sh:1.0 .</code></p>
+<p><code>-f</code> Use a specific Dockerfile.base (default is Dockerfile)</p>
+<p><code>-t</code> Give our image a <code>name:tag</code></p>
+<div class="highlight"><pre><span></span>docker build -f Dockerfile.base -t jtp.sh:1.0 .
+Sending build context to Docker daemon   54.6MB
+Step 1/8 : FROM bionic:latest
+ ---&gt; 278a86f574bb
+Step 2/8 : RUN apt-get update &amp;&amp; apt-get install -y apache2
+ ---&gt; Using cache
+ ---&gt; ab1c385bfc47
+Step 3/8 : RUN mkdir /var/www/jtp.sh
+ ---&gt; Using cache
+ ---&gt; 36a30a5a9f23
+Step 4/8 : RUN rm /etc/apache2/sites-enabled/000-default.conf
+ ---&gt; Using cache
+ ---&gt; 7d1db1fd3f50
+Step 5/8 : COPY apache/jtp.sh.conf /etc/apache2/sites-enabled/jtp.sh.conf
+ ---&gt; Using cache
+ ---&gt; da8ba0ce5cd9
+Step 6/8 : COPY output/ /var/www/jtp.sh
+ ---&gt; 698bdade8eb5
+Step 7/8 : EXPOSE 80
+ ---&gt; Running in 4e21cb556f5e
+Removing intermediate container 4e21cb556f5e
+ ---&gt; a2b900c04e10
+Step 8/8 : CMD apachectl -D FOREGROUND
+ ---&gt; Running in 80c128065876
+Removing intermediate container 80c128065876
+ ---&gt; f2ec0e584d5d
+Successfully built f2ec0e584d5d
+Successfully tagged jtp.sh:1.0
+</pre></div>
+
+
+<p>We can confirm the new image has been created:</p>
+<div class="highlight"><pre><span></span>docker image ls jtp.sh:1.0
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+jtp.sh              1.0                 f2ec0e584d5d        46 seconds ago      364MB
+</pre></div>
+
+
+<p>Running the container:</p>
+<div class="highlight"><pre><span></span>docker container run -p 8000:80 -d jtp.sh:1.0
+ebce0f19de8df6bcfd3b998dac0637e7e80843e0b512b99f1e74f6e150fb7ca9
+
+docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                  NAMES
+ebce0f19de8d        jtp.sh:1.0          &quot;/bin/sh -c &#39;apachec…&quot;   About a minute ago   Up About a minute   0.0.0.0:8000-&gt;80/tcp   inspiring_volhard
+</pre></div>
+
+
+<p><code>-p</code> Setup port-forwarding</p>
+<p><code>-d</code> Run in background</p>
+<p>We can now see our site is running by visiting <code>localhost:8000</code>.</p>
+<p><img alt="Screenshot" src="/images/Screenshot_20190208_193833.png"></p>
+  </div>
+</section>
+        </div>
+        <br><hr>
+<footer class="site-footer">
+    <p><small><small>About: I'm a Linux SysAdmin/DevOps based in Manila, PH<br>
+            Github: <a class="txtlink" href="https://github.com/jtpsh">jtpsh</a><br>
+            Email: hello@jtp.sh</small></small></p>
+</footer>    </body>
+</html>

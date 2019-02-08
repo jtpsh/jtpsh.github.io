@@ -1,6 +1,6 @@
 body {
     margin: 40px auto;
-    max-width: 650px;
+    max-width: 700px;
     line-height: 1.6;
     font-size: 18px;
     color: #444;
@@ -84,7 +84,7 @@ ul {
     padding: 8px 16px;
 }
 .navbar {
-    max-width: 650px;
+    max-width: 700px;
 }
 .navbar li {
     display: inline-block;
@@ -110,3 +110,20 @@ ul {
     color: white;
     text-decoration: none;
 }
+pre {
+    background-color: #f6f8fa;
+    font-size: 85%;
+    overflow: auto;
+    padding: 16px;
+}
+code {
+    background-color: rgba(27,31,35,.05);
+    font-size: 85%;
+    margin: 0;
+    padding: .2em .4em
+}
+img {
+    width: 100%;
+    max-width: 700px;
+}
+
