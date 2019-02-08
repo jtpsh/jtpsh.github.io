@@ -73,7 +73,11 @@ EXPOSE 80
 CMD apachectl -D FOREGROUND
 ```
 
-Build the image with `docker build -f Dockerfile.base -t jtp.sh:1.0`
+Build the image with `docker build -f Dockerfile.base -t jtp.sh:1.0 .`
+
+`-f` Use a specific Dockerfile.base (default is Dockerfile)
+`-t` Give our image a `name:tag`
+
 
 ```
 docker build -f Dockerfile.base -t jtp.sh:1.0 .
@@ -125,3 +129,5 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ebce0f19de8d        jtp.sh:1.0          "/bin/sh -c 'apachec…"   About a minute ago   Up About a minute   0.0.0.0:8000->80/tcp   inspiring_volhard
 ```
 
+`-p` Setup port-forwarding
+`-d` Run in background
