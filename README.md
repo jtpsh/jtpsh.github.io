@@ -4,18 +4,18 @@ Static generator for https://jtp.sh
 
 
 ### Build status
-[![CircleCI](https://circleci.com/gh/dyepriiii/dyepriiii.github.io/tree/static-generator.svg?style=svg)](https://circleci.com/gh/dyepriiii/dyepriiii.github.io/tree/static-generator)
+[![CircleCI](https://circleci.com/gh/jtpsh/jtpsh.github.io/tree/static-generator.svg?style=svg)](https://circleci.com/gh/jtpsh/jtpsh.github.io/tree/static-generator)
 
 
 ### Building
 ```
-git clone git@github.com:dyepriiii/dyepriiii.github.io.git
+git clone git@github.com:jtpsh/jtpsh.github.io.git
 git fetch
 git checkout static-generator
 source local_setup.sh
 
 make cssminify && make html && \
-    make html5validator && \
+    make validate && \
     make serve
 ```
 

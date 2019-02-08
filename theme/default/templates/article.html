@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block html_lang %}{{ article.lang }}{% endblock %}
+
+{% block title %}{{ SITENAME }} - {{ article.title }}{% endblock %}
+{% block content %}
+<section id="content" class="body">
+  <h2>{{ article.title }}</h2>
+  <footer class="post-info">
+    <time class="published" datetime="{{ article.date.isoformat() }}">
+        <small>{{ article.locale_date }}</small>
+    </time>
+  </footer>
+  <div class="entry-content">
+    {{ article.content }}
+  </div>
+</section>
+{% endblock %}

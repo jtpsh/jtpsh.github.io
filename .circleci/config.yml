@@ -19,24 +19,20 @@ jobs:
       - save_cache:
           paths:
             - ./jtp-env
+            - /usr/lib/jvm/java-8-openjdk-amd64/
           key: v1-deps-{{ checksum "requirements.txt" }}
-      - run:
-          name: Minify CSS
-          command: |
-            test -e && source jtp-env/bin/activate
-            make cssminify
 
       - run:
           name: Generate HTML
           command: |
             test -e && source jtp-env/bin/activate
-            make html
+            make publish
 
       - run:
-          name: Validate HTML files
+          name: Validate HTML/CSS files
           command: |
             test -e && source jtp-env/bin/activate
-            make html5validate
+            make validate
 
       - run:
           name: Publish to Github pages (master branch)
