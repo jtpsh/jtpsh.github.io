@@ -121,4 +121,3 @@ ebce0f19de8d        jtp.sh:1.0          "/bin/sh -c 'apachec…"   About a minut
 
 We can now see our site is running by visiting `localhost:8000`.
 
-![Screenshot](/images/Screenshot_20190208_193833.png)
