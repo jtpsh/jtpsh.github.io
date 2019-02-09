@@ -21,7 +21,7 @@ sudo tar -C bionic -c . | docker import - bionic
 
 ### Creating Dockerfile
 
-(See [Docker Documentation](https://docs.docker.com/engine/reference/builder/) for a a more information.)
+(See [Docker Documentation](https://docs.docker.com/engine/reference/builder/) for more information.)
 
 Save the file as `Dockerfile.base`
 
