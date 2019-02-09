@@ -25,7 +25,7 @@ sudo debootstrap bionic bionic
 
 &lt;p&gt;(You can safely remove the files created from the previous command.)&lt;/p&gt;
 &lt;h3&gt;Creating Dockerfile&lt;/h3&gt;
-&lt;p&gt;(See &lt;a href="https://docs.docker.com/engine/reference/builder/"&gt;Docker Documentation&lt;/a&gt; for a a more information.)&lt;/p&gt;
+&lt;p&gt;(See &lt;a href="https://docs.docker.com/engine/reference/builder/"&gt;Docker Documentation&lt;/a&gt; for more information.)&lt;/p&gt;
 &lt;p&gt;Save the file as &lt;code&gt;Dockerfile.base&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# We&amp;#39;ll use the image we create earlier
 # Every Dockefile starts with this instruction
