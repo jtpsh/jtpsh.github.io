@@ -143,7 +143,7 @@ my-site             latest              a57a8ce77062        4 minutes ago       
 
 
 &lt;p&gt;We can see the image on manager, but somehow docker can't see it? &lt;code&gt;:thinking:&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;With little bit of digging (read: a quick google search), I learned the image created on the manager is available only on itself, and not on the whole swarm. The warning message &lt;code&gt;image static-site:latest could not be accessed on a registry to record its digest&lt;/code&gt; is the hint. The solution is to push the image on a registry, either on Docker Hub or setup a local service. We'll do the latter.&lt;/p&gt;
+&lt;p&gt;With little bit of digging (read: a quick google search), I learned that the image created on the manager is available only on itself, and not on the whole swarm. The warning message &lt;code&gt;image static-site:latest could not be accessed on a registry to record its digest&lt;/code&gt; is the hint. The solution is to push the image on a registry, either on Docker Hub or setup a local service. We'll do the latter.&lt;/p&gt;
 &lt;h3&gt;Setting up a local registry&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;root@ubuntu01-manager:~# docker service create --name registry --publish published=5000,target=5000 registry:2
 y7vkch2wbkq9ugrr6b73xtlf2
