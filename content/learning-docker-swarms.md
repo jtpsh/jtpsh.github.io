@@ -297,5 +297,5 @@ Service availability on a swarm shouldn't be a concern (with given enough replic
 
 ### References:
 Swarm Tutorial: [https://docs.docker.com/engine/swarm/swarm-tutorial/](https://docs.docker.com/engine/swarm/swarm-tutorial/)  
-Docker CLI reference [https://docs.docker.com/engine/reference/commandline/docker/](https://docs.docker.com/engine/reference/commandline/docker/)  
+Docker CLI reference: [https://docs.docker.com/engine/reference/commandline/docker/](https://docs.docker.com/engine/reference/commandline/docker/)  
 Docker swarm availability: [https://docs.docker.com/engine/swarm/swarm-tutorial/drain-node/](https://docs.docker.com/engine/swarm/swarm-tutorial/drain-node/)
