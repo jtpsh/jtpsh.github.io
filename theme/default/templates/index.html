@@ -1,13 +1,21 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jtp.sh</title>
+        <link rel="stylesheet" type="text/css" href="/theme/css/main.min.css">
+    </head>
 
-{% block title %}{{ SITENAME }}{% endblock %}
+    <body>
+        <div class="container">
+            <h1 class="banner"><a href="/">jtp.sh</a></h1><br>
+            <footer class="site-footer">
+                <p><small><small>About: I'm a Linux SysAdmin/DevOps based in Manila, PH<br>
+            Github: <a class="txtlink" href="https://github.com/jtpsh">jtpsh</a><br>
+            Email: hello@jtp.sh</small></small></p>
+            </footer>
 
-{% block content %}
-    {% if articles %}
-        {% for article in articles %}
-            <h2><a href="/{{ article.slug }}">{{ article.title }}</a></h2>
-            {{ article.summary }}
-        {% endfor %}
-    {% endif %}
-
-{% endblock content %}
+        </div>
+    </body>
+</html>
