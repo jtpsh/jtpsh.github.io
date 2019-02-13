@@ -3,59 +3,19 @@
     <head lang="en">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>jtp.sh - Articles by jp</title>
+        <title>jtp.sh</title>
         <link rel="stylesheet" type="text/css" href="/theme/css/main.min.css">
     </head>
 
     <body>
-<header>
-    <h1><a class="txtlink" href="/">Hello, World!</a></h1>
-    <p>jtp.sh - things and stuff</p>
-    <!--
-        commenting; when I have the pages ready
-    <div class="navbar">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#Archives">Archives</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-    -->
-</header>        <hr><br>
         <div class="container">
-            <h2><a href="/learning-docker-swarms">Learning Docker Swarms</a></h2>
-            <h3>Intro</h3>
-<p>This is the second part of my attempt at learning Docker. I looked at Docker swarms this time.</p>
-<h3>The setup</h3>
-<p>I have 3 VMs running on the same network:</p>
-<p><code>ubuntu01-manager</code> - delegated manager<br>
-<code>ubuntu02</code> - worker 1<br>
-<code>ubuntu03</code> - worker 2</p>
-<p><a href="https://github.com/jtpsh/learning-docker/blob/master/bootstrap.yml">A bootstrap playbook to setup Docker CE.</a></p>
-<p><code>Protip: docker CLI has …</code></p>
-            <h2><a href="/creating-docker-to-test-our-static-site">Creating Docker to test our static site</a></h2>
-            <h3>Docker from base image (Manual)</h3>
-<p>Since I'm trying to learn Docker, I tried creating image from scratch. Creating base Ubuntu image is straightforward using <code>deboostrap</code>.</p>
-<div class="highlight"><pre><span></span>sudo apt install debootstrap
-sudo debootstrap bionic bionic
-</pre></div>
-
-
-<p>Once complete we can now import the image:</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">tar</span> <span class="o">-</span><span class="n">C</span> <span class="n">bionic</span> <span class="o">-</span><span class="n">c</span> <span class="o">.</span> <span class="o">|</span> <span class="n">docker</span> <span class="kn">import</span> <span class="o">-</span> <span class="n">bionic</span>
-</pre></div>
-
-
-<p>(You …</p>
-            <h2><a href="/test-first-post">Test first post</a></h2>
-            <p>This is a new first post. Pelican <a href="https://github.com/getpelican/pelican/wiki/Tips-n-Tricks">Tips n Tricks</a></p>
-
-        </div>
-        <br><hr>
-<footer class="site-footer">
-    <p><small><small>About: I'm a Linux SysAdmin/DevOps based in Manila, PH<br>
+            <h1 class="banner"><a href="/">jtp.sh</a></h1><br>
+            <footer class="site-footer">
+                <p><small><small>About: I'm a Linux SysAdmin/DevOps based in Manila, PH<br>
             Github: <a class="txtlink" href="https://github.com/jtpsh">jtpsh</a><br>
             Email: hello@jtp.sh</small></small></p>
-</footer>    </body>
+            </footer>
+
+        </div>
+    </body>
 </html>
