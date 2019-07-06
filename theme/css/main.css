@@ -7,10 +7,8 @@ body {
 
 .ascii-art {
   font-family: monospace;
-  font-size: calc(1.1vw);
   font-weight: bold;
   white-space: pre-wrap;
-  width: 70ch;
   text-align: center
 }
 
