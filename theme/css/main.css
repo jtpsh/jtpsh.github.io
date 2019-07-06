@@ -8,6 +8,7 @@ body {
 .ascii-art {
   font-family: monospace;
   font-weight: bold;
+  font-size: calc(1.0vw);
   white-space: pre-wrap;
   text-align: center
 }
@@ -19,4 +20,5 @@ body {
 
 .footer {
   text-align: center;
+  font-size: calc(1.0vw);
 }
