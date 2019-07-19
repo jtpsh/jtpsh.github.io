@@ -19,6 +19,7 @@ body {
 }
 
 .footer {
+  padding-top: 100px;
   text-align: center;
   font-size: calc(0.9vw);
 }
