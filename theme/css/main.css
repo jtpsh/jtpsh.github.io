@@ -2,24 +2,34 @@ body {
   background: black;
   color: limegreen;
   padding: 25px;
-  font-family: sans-serif;
+  font-family: 'Iosevka Term SS09 Web';
+  font-weight: normal;
+  background-color: #282b36;
 }
 
-.ascii-art {
-  font-family: monospace;
-  font-weight: bold;
-  font-size: calc(0.7vw);
-  white-space: pre-wrap;
-  text-align: center
-}
-
-.center {
-  display: block;
-  margin: auto;
-}
-
-.footer {
-  padding-top: 100px;
-  text-align: center;
+.term {
+  font-family: 'Iosevka Term SS09 Web';
+  font-weight: regular;
   font-size: calc(0.9vw);
+}
+
+.c1 {
+    color: #84dbef;
+}
+.c2 {
+    color: #575b70;
+}
+.c3 {
+    color: #caa9fa;
+    font-weight: bold;
+}
+.c4 {
+    color: #e6e6e6;
+    font-weight: bold;
+}
+.c5 {
+    color: #ff6e67;
+}
+.c6 {
+    color: #bfbfbf;
 }

@@ -8,12 +8,67 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
-        <style>body{background:#000;color:#32cd32;padding:25px;font-family:sans-serif}.footer{padding-top:100px;text-align:center;font-size:calc(1vw)}</style>
+        <link rel="stylesheet" type="text/css" href="theme/css/main.css">
+        <style>
+	    	@import url(theme/css/webfont.css);
+	    </style>
+        <script type="text/javascript">
+            function curtime() {
+                var D = new Date();
+                var t = D.getHours() + ":" + D.getMinutes() + ":" + D.getSeconds()
+                s = document.getElementById("curtime");
+                txt = document.createTextNode(t);
+                s.appendChild(txt);
+                s2 = document.getElementById("curtime2");
+                txt = document.createTextNode(t);
+                s2.appendChild(txt);
+                s3 = document.getElementById("curtime3");
+                txt = document.createTextNode(t);
+                s3.appendChild(txt);
+            }
+        </script>
     </head>
-    <body>
+    <body onload=curtime()>
         <div class="container">
-            <p class="footer">
-Linux SysAdmin &nbsp;&bull;&nbsp; DevOps &nbsp;&bull;&nbsp; Manila, PH &nbsp;&bull;&nbsp; contact@jtp.sh
+            <p class=term>
+            <span class=c6>Enter passphrase for /home/jtp/.ssh/id_rsa:</span>
+            <br />
+            <span class=c6>Bad passphrase, try again for /home/jtp/.ssh/id_rsa:</span>
+            <br />
+            <br />
+            <span class=c1 id=curtime></span>
+            <span class=c2>[</span><span class=c3>jtp@Laptop-T490</span><span class=c2>]</span>
+            <span class=c4>~</span>
+            <br />
+            <span class=c5>~ᐷ</span>
+            <span class=c6>cd website/jtp.sh/</span>
+            <br />
+            <br />
+            <span class=c1 id=curtime2></span>
+            <span class=c2>[</span><span class=c3>jtp@Laptop-T490</span><span class=c2>]</span>
+            <span class=c4>~/website/jtp.sh</span>
+            <span class=c2>(git:master)</span>
+            <br />
+            <span class=c5>~ᐷ</span>
+            <span class=c6>cat &lt;&lt; EOF &gt;&gt; about.txt</span>
+            <br />
+            <span class=c6>&gt; I'm a Linux System Administrator &amp;&amp; Cloud Engineer employing DevOps practices</span>
+            <br />
+            <span class=c6>&gt; Working with Ansible, Terraform, Docker, and shell scripts.</span>
+            <br />
+            <span class=c6>&gt; Say hi to jp@jtp.sh</span>
+            <br />
+            <span class=c6>&gt;</span>
+            <br />
+            <span class=c6>&gt; EOF</span>
+            <br />
+            <br />
+            <span class=c1 id=curtime3></span>
+            <span class=c2>[</span><span class=c3>jtp@Laptop-T490</span><span class=c2>]</span>
+            <span class=c4>~/website/jtp.sh</span>
+            <span class=c2>(git:master)</span>
+            <br />
+            <span class=c5>~ᐷ</span>
             </p>
         </div>
     </body>
