@@ -1,16 +1,16 @@
 body {
-  background: black;
-  color: limegreen;
-  padding: 25px;
-  font-family: 'Iosevka Term SS09 Web', 'Lucida Console', Monaco, monospace;
-  font-weight: normal;
-  background-color: #282b36;
+    background: black;
+    color: limegreen;
+    padding: 25px;
+    font-family: 'Iosevka Term SS09 Web', 'Lucida Console', Monaco, monospace;
+    font-weight: normal;
+    background-color: #282b36;
 }
 
 .term {
-  font-family: 'Iosevka Term SS09 Web', 'Lucida Console', Monaco, monospace;
-  font-weight: normal;
-  font-size: calc(0.9vw);
+    font-family: 'Iosevka Term SS09 Web', 'Lucida Console', Monaco, monospace;
+    font-weight: normal;
+    font-size: calc(0.9vw);
 }
 
 .c1 {
@@ -32,4 +32,60 @@ body {
 }
 .c6 {
     color: #bfbfbf;
+}
+
+/* https://codepen.io/ArtemGordinsky/pen/GnLBq */
+.blinking-cursor {
+    color: #bfbfbf;
+    font-size: calc(0.8vw);
+    -webkit-animation: 1.5s blink step-end infinite;
+    -moz-animation: 1.5s blink step-end infinite;
+    -ms-animation: 1.5s blink step-end infinite;
+    -o-animation: 1.5s blink step-end infinite;
+    animation: 1.5s blink step-end infinite;
+}
+
+@keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: #bfbfbf;
+    }
+}
+
+@-moz-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: #bfbfbf;
+    }
+}
+
+@-webkit-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: #bfbfbf;
+    }
+}
+
+@-ms-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: #bfbfbf;
+    }
+}
+
+@-o-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: #bfbfbf;
+    }
 }
