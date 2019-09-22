@@ -10,7 +10,7 @@ body {
 .term {
     font-family: 'Iosevka Term SS09 Web', 'Lucida Console', Monaco, monospace;
     font-weight: normal;
-    font-size: calc(0.9vw);
+    font-size: calc(1.5vw);
 }
 
 .c1 {
