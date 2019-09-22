@@ -37,7 +37,7 @@ body {
 /* https://codepen.io/ArtemGordinsky/pen/GnLBq */
 .blinking-cursor {
     color: #bfbfbf;
-    font-size: calc(0.8vw);
+    font-size: calc(1.2vw);
     -webkit-animation: 1.5s blink step-end infinite;
     -moz-animation: 1.5s blink step-end infinite;
     -ms-animation: 1.5s blink step-end infinite;
