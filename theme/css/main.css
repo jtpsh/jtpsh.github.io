@@ -1,16 +1,15 @@
 body {
-    background: black;
-    color: limegreen;
     padding: 25px;
     font-family: 'Iosevka Term SS09 Web', 'Lucida Console', Monaco, monospace;
     font-weight: normal;
+    background: black;
     background-color: #282b36;
 }
 
 .term {
     font-family: 'Iosevka Term SS09 Web', 'Lucida Console', Monaco, monospace;
     font-weight: normal;
-    font-size: calc(1.5vw);
+    font-size: calc(1.8vw);
 }
 
 .c1 {
@@ -37,7 +36,7 @@ body {
 /* https://codepen.io/ArtemGordinsky/pen/GnLBq */
 .blinking-cursor {
     color: #bfbfbf;
-    font-size: calc(1.2vw);
+    font-size: calc(1.5vw);
     -webkit-animation: 1.5s blink step-end infinite;
     -moz-animation: 1.5s blink step-end infinite;
     -ms-animation: 1.5s blink step-end infinite;
