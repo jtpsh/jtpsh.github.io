@@ -4,7 +4,7 @@
     font-weight: 400;
     font-display: auto;
     font-style: normal;
-    src: url('woff2/iosevka-term-ss09-regular.woff2') format('woff2'), url('woff/iosevka-term-ss09-regular.woff') format('woff'), url('ttf/iosevka-term-ss09-regular.ttf') format('truetype');
+    src: url('/theme/css/woff2/iosevka-term-ss09-regular.woff2') format('woff2'), url('/theme/css/woff/iosevka-term-ss09-regular.woff') format('woff'), url('/theme/css/ttf/iosevka-term-ss09-regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -12,6 +12,6 @@
     font-weight: 700;
     font-display: auto;
     font-style: normal;
-    src: url('woff2/iosevka-term-ss09-bold.woff2') format('woff2'), url('woff/iosevka-term-ss09-bold.woff') format('woff'), url('ttf/iosevka-term-ss09-bold.ttf') format('truetype');
+    src: url('/theme/css/woff2/iosevka-term-ss09-bold.woff2') format('woff2'), url('/theme/css/woff/iosevka-term-ss09-bold.woff') format('woff'), url('/theme/css/ttf/iosevka-term-ss09-bold.ttf') format('truetype');
 }
 
