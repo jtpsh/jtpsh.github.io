@@ -1,4 +1,4 @@
 I'm a Linux System Administrator && Cloud Engineer employing DevOps practices
-Working with Ansible, Terraform, Docker, and shell scripts
+Working with Ansible, Terraform, Linux, containers, and shell scripts
 Say hi to jeff@jtp.sh
 
