@@ -1,4 +1,4 @@
-I'm a Linux System Administrator && Cloud Engineer employing DevOps practices
+I'm a Linux System Administrator / Cloud Engineer / DevOps Engineer
 Working with Ansible, Terraform, Linux, containers, and shell scripts
-Say hi to jp@jtp.sh
+Say hello@jtp.sh
 
