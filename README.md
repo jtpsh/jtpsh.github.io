@@ -1,5 +1,1 @@
-# readme
-
-Overhauled index
-
-https://jtp.sh
+https://jtpsh.com
